@@ -43,15 +43,25 @@ model Adress {
 model User {
   id                  Int         @id @default(autoincrement())
   email               String      @unique
+  password            String
   emailVerified       DateTime?   @map("email_verified")
   firstname           String
   lastname            String
   role                Role        @default(USER)
   createdAt           DateTime    @map("created_at") @default(now())
   adress              Adress?
+  session             Session?
   reservation         Reservation[]
 
   @@map("users")
+}
+
+model Session {
+  id                 Int          @id @default(autoincrement())
+  User               User         @relation(fields: [userId], references: [id])
+  userId             Int          @map("user_id")
+  refresh            Boolean      @default(false)
+  dateStart          DateTime     @map("date_start") @default(now())
 }
 
 model Event {
