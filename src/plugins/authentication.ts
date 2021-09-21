@@ -6,7 +6,7 @@ import { Unauthorized } from "http-errors";
 import { FastifyInstance } from "fastify/types/instance";
 import { FastifyRequest } from "fastify/types/request";
 
-// Import internal dependencies
+// Import Internal dependencies
 import { customVars } from "../config";
 
 async function authentication(server: FastifyInstance) {

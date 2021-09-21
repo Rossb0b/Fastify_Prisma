@@ -6,7 +6,7 @@ const server = buildServer({
   logger: true
 });
 
-server.listen("3000", "localhost", function httpListeningCallback(err, addr) {
+server.listen(process.env.PORT, process.env.HOST, function httpListeningCallback(err, addr) {
   if (err) {
     server.log.error(err);
     process.exit(1);
